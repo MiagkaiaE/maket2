@@ -1,0 +1,91 @@
+@charset "UTF-8";
+/* импорт обнуляющий стиль */
+@import url(/css/_null_style.css);
+body {
+  font-family: Jost, sans-serif;
+}
+
+/* контейнер */
+.container {
+  max-width: 192rem;
+  margin: 0 auto;
+  /* потом уберу */
+  border: 1px solid blue;
+}
+
+/* header */
+.header {
+  background: #141024;
+}
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 8rem;
+}
+.header__logo {
+  max-width: 22.8rem;
+  height: auto;
+}
+.header__nav-list {
+  display: flex;
+  gap: 4rem;
+}
+.header__nav-item {
+  font-size: 2rem;
+}
+.header__nav-link {
+  color: #FFFFFF;
+}
+.header__phone {
+  color: #FFFFFF;
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hero {
+  background: #141024;
+  min-height: auto;
+}
+.hero__inner {
+  padding-top: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+}
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  color: #FFFFFF;
+}
+.hero__title {
+  font-size: 7rem;
+  font-weight: 600;
+}
+.hero__subtitle {
+  font-size: 2rem;
+  max-width: 47.8rem;
+}
+.hero__button {
+  background: #D52027;
+  color: #FFFFFF;
+  font-size: 1.8rem;
+  padding: 1.5rem 2rem;
+  max-width: 25rem;
+  cursor: pointer;
+}
+.hero__image {
+  max-width: 78.3rem;
+}
+.hero__image img {
+  max-width: 100%;
+  height: auto;
+}/*# sourceMappingURL=style.css.map */

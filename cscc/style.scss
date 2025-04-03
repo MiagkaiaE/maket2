@@ -1,0 +1,107 @@
+
+/* импорт обнуляющий стиль */
+@import url(/css/_null_style.css);
+ body {
+	font-family: Jost, sans-serif;
+ }
+
+/* контейнер */
+.container {
+	max-width: 192rem;
+	margin: 0 auto;
+	/* потом уберу */
+	border: 1px solid blue;
+}
+
+/* header */
+.header {
+	background: #141024;
+	
+		&__inner{
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 3rem 8rem;
+		}
+
+		&__logo {
+			max-width: 22.8rem;
+			height: auto;
+		}
+
+		&__nav {
+		}
+
+		&__nav-list {
+			display: flex;
+			gap: 4rem;
+		}
+
+		&__nav-item {
+			font-size: 2rem;
+		}
+
+		&__nav-link {
+			color: #FFFFFF;
+		}
+
+		&__phone {
+			color: #FFFFFF;
+			font-size: 3rem;
+			font-weight: 600;
+		}
+	
+}
+
+.main {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.hero {
+	background: #141024;
+	min-height: auto;
+
+		&__inner {
+			padding-top: 8rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 5rem;
+		}
+
+		&__content {
+			display: flex;
+			flex-direction: column;
+			gap: 4rem;
+			color: #FFFFFF;
+		}
+
+		&__title {
+			font-size: 7rem;
+			font-weight: 600;
+		}
+
+		&__subtitle {
+			font-size: 2rem;
+			max-width: 47.8rem;
+		}
+
+		&__button {
+			background: #D52027;
+			color: #FFFFFF;
+			font-size: 1.8rem;
+			padding: 1.5rem 2rem;
+			max-width: 25rem;
+			cursor: pointer;
+		}
+
+		&__image {
+			max-width: 78.3rem;
+		}
+
+		&__image img {
+			max-width: 100%;
+			height: auto;
+		}
+	}
