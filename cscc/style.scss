@@ -76,7 +76,7 @@
 		&__mobile-item {
 			display: none;
 		}
-		@media (max-width:390px){
+		@media (max-width:310px){
 
 			&__inner {
 				padding: 0.8rem 1rem;
@@ -161,7 +161,7 @@
 			height: auto;
 		}
 
-		@media (max-width:390px) {
+		@media (max-width:310px) {
 			min-height:56.8rem;
 
 			&__inner {
