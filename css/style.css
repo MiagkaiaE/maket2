@@ -42,6 +42,44 @@ body {
   font-size: 3rem;
   font-weight: 600;
 }
+.header__mobile {
+  display: none;
+}
+.header__mobile-phone img {
+  max-width: 4.4rem;
+  height: auto;
+}
+.header__mobile-nav {
+  background: none; /* Убираем стандартный цвет кнопки */
+  border: none; /* Убираем стандартную рамку кнопки */
+}
+.header__mobile-nav img {
+  max-width: 4.4rem;
+  height: auto;
+}
+.header__mobile-item {
+  display: none;
+}
+@media (max-width: 390px) {
+  .header__inner {
+    padding: 0.8rem 1rem;
+  }
+  .header__logo {
+    max-width: 13.6rem;
+    height: auto;
+  }
+  .header__nav {
+    display: none;
+  }
+  .header__phone {
+    display: none;
+  }
+  .header__mobile {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+}
 
 .main {
   display: flex;
@@ -51,7 +89,7 @@ body {
 
 .hero {
   background: #141024;
-  min-height: auto;
+  min-height: 60rem;
 }
 .hero__inner {
   padding-top: 8rem;
@@ -59,6 +97,8 @@ body {
   align-items: center;
   justify-content: center;
   gap: 5rem;
+  position: relative; /* Добавляем position: relative */
+  min-height: 60rem; /* Устанавливаем высоту для десктопной версии */
 }
 .hero__content {
   display: flex;
@@ -80,6 +120,7 @@ body {
   font-size: 1.8rem;
   padding: 1.5rem 2rem;
   max-width: 25rem;
+  border-radius: 0.5rem;
   cursor: pointer;
 }
 .hero__image {
@@ -88,4 +129,45 @@ body {
 .hero__image img {
   max-width: 100%;
   height: auto;
+}
+@media (max-width: 390px) {
+  .hero {
+    min-height: 56.8rem;
+  }
+  .hero__inner {
+    padding: 5rem 1rem;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 56.8rem; /* Устанавливаем высоту для мобильной версии */
+  }
+  .hero__content {
+    text-align: center;
+    gap: 2rem;
+    z-index: 2;
+  }
+  .hero__title {
+    font-size: 3rem;
+  }
+  .hero__subtitle {
+    font-size: 1.6rem;
+    max-width: 25rem;
+    line-height: 160%;
+  }
+  .hero__button {
+    position: absolute;
+    bottom: 4rem;
+    left: 1rem;
+    right: 1rem;
+    max-width: none; /* Растягиваем на всю ширину с отступами */
+    width: calc(100% - 2rem); /* Учитываем отступы слева и справа */
+    font-size: 1.6rem;
+    padding: 1.8rem 2rem;
+  }
+  .hero__image {
+    position: absolute;
+    z-index: 1;
+    max-width: 27.3rem;
+    height: auto;
+    bottom: 4rem;
+  }
 }/*# sourceMappingURL=style.css.map */

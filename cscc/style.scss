@@ -11,12 +11,13 @@
 	margin: 0 auto;
 	/* потом уберу */
 	border: 1px solid blue;
+
 }
 
 /* header */
 .header {
 	background: #141024;
-	
+
 		&__inner{
 			display: flex;
 			justify-content: space-between;
@@ -50,7 +51,57 @@
 			font-size: 3rem;
 			font-weight: 600;
 		}
-	
+
+// мобильная версия
+		&__mobile {
+			display: none;
+
+		}
+
+		&__mobile-phone img {
+			max-width: 4.4rem;
+			height: auto;
+		}
+
+		&__mobile-nav {
+			background: none; /* Убираем стандартный цвет кнопки */
+			border: none; /* Убираем стандартную рамку кнопки */
+		}
+
+		&__mobile-nav img {
+			max-width: 4.4rem;
+			height: auto;
+		}
+
+		&__mobile-item {
+			display: none;
+		}
+		@media (max-width:390px){
+
+			&__inner {
+				padding: 0.8rem 1rem;
+			}
+
+			&__logo {
+				max-width: 13.6rem;
+				height: auto;
+			}
+
+			&__nav {
+				display: none;
+			}
+
+			&__phone {
+				display: none;
+			}
+
+			&__mobile {
+				display: flex;
+				gap: 1rem;
+				align-items: center;
+			}
+
+		}
 }
 
 .main {
@@ -60,7 +111,7 @@
 }
 .hero {
 	background: #141024;
-	min-height: auto;
+	min-height: 60rem;
 
 		&__inner {
 			padding-top: 8rem;
@@ -68,6 +119,9 @@
 			align-items: center;
 			justify-content: center;
 			gap: 5rem;
+			position: relative; /* Добавляем position: relative */
+    		min-height: 60rem; /* Устанавливаем высоту для десктопной версии */
+			
 		}
 
 		&__content {
@@ -85,6 +139,7 @@
 		&__subtitle {
 			font-size: 2rem;
 			max-width: 47.8rem;
+	
 		}
 
 		&__button {
@@ -93,6 +148,7 @@
 			font-size: 1.8rem;
 			padding: 1.5rem 2rem;
 			max-width: 25rem;
+			border-radius: 0.5rem;
 			cursor: pointer;
 		}
 
@@ -104,4 +160,52 @@
 			max-width: 100%;
 			height: auto;
 		}
+
+		@media (max-width:390px) {
+			min-height:56.8rem;
+
+			&__inner {
+				padding: 5rem 1rem;
+				flex-direction: column;
+				justify-content: flex-start;
+				min-height: 56.8rem; /* Устанавливаем высоту для мобильной версии */
+			}
+
+			&__content {
+				text-align: center;
+				gap: 2rem;
+				z-index: 2;
+			}
+
+			&__title {
+				font-size: 3rem;
+			}
+
+			&__subtitle {
+				font-size: 1.6rem;
+				max-width: 25rem;
+				line-height: 160%;
+	
+			}
+
+			&__button {
+				position: absolute;
+      		bottom: 4rem;
+      		left: 1rem;
+      		right: 1rem;
+      		max-width: none; /* Растягиваем на всю ширину с отступами */
+      		width: calc(100% - 2rem); /* Учитываем отступы слева и справа */
+      		font-size: 1.6rem;
+				padding: 1.8rem 2rem;
+			}
+
+			&__image {
+				position: absolute;
+				z-index: 1;
+				max-width: 27.3rem;
+				height: auto;
+				bottom: 4rem;
+			}
+		}
 	}
+
