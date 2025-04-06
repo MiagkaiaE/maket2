@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /* импорт обнуляющий стиль */
-@import url(/css/_null_style.css);
+@import url(../css/_null_style.css);
 body {
   font-family: Jost, sans-serif;
 }
