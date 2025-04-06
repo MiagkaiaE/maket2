@@ -126,7 +126,7 @@ body {
   background: none; /* Убираем стандартный цвет кнопки */
   border: none; /* Убираем стандартную рамку кнопки */
 }
-@media (max-width: 310px) {
+@media (max-width: 320px) {
   .header__inner {
     padding: 0.8rem 1rem;
   }
@@ -255,7 +255,7 @@ body {
   max-width: 100%;
   height: auto;
 }
-@media (max-width: 310px) {
+@media (max-width: 320px) {
   .hero {
     min-height: 56.8rem;
   }
