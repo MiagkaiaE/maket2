@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="css/style.css">
+	<script src="script.js" defer></script>
 	<title>Макет2</title>
 </head>
 <body>
@@ -32,15 +33,18 @@
 					</a>
 					<button type ="button" class = "header__mobile-nav" aria-label="Открыть меню">
 						<img src="images/gamburger.png" alt="Меню">
-						<ul class="header__mobile-item">
-							<li>О школе</li>
-							<li>Тренеры</li>
-							<li>Стоимость</li>
-						</ul>
 					</button>
 				</div>
 			</div>
 		</header>
+		<nav class="mobile-nav">
+			<button type = "button" class = "mobile-nav__close"></button>
+			<ul class = "mobile-nav__list">
+				<li class = "mobile-nav__item">О школе</li>
+				<li class = "mobile-nav__item">Тренеры</li>
+				<li class = "mobile-nav__item">Стоимость</li>
+			</ul>
+		</nav>
 		<main class="main">
 			<section class="hero">
 				<div class = "hero__inner">

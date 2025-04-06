@@ -1,6 +1,7 @@
 
 /* импорт обнуляющий стиль */
-@import url(/css/_null_style.css);
+@import "../css/_null_style";
+
  body {
 	font-family: Jost, sans-serif;
  }
@@ -73,9 +74,6 @@
 			height: auto;
 		}
 
-		&__mobile-item {
-			display: none;
-		}
 		@media (max-width:310px){
 
 			&__inner {
@@ -103,6 +101,78 @@
 
 		}
 }
+
+.mobile-nav {
+	display: none;
+	padding: 0.8rem 1rem;
+	background: #141024;
+	position: fixed;
+	top: 0;
+  	left: 0;
+  	width: 100%; /* Растягиваем на всю ширину */
+  	height: 100%; /* Растягиваем на всю высоту */
+  	z-index: 10; /* Чтобы меню перекрывало header */
+	// display: flex;
+	flex-direction: column;
+
+
+
+		&__close {
+			background: none;
+			border: none;
+			width: 4.4rem;
+			height: 4.4rem;
+
+			background: rgba(255, 255, 255, 0.032);
+			border-radius: 10px;
+			border: none; /* Убираем стандартную границу */
+			box-shadow: 
+			0 -2px 2px rgb(255, 255, 255, 0.5), /* Ярче сверху */
+			0 1px 2px rgba(255, 255, 255, 0.1); /* Темнее снизу */
+			align-self: flex-end;
+			position: relative;
+			
+		}
+// крестик
+		&__close::before,
+		&__close::after {
+			content: '';
+			position: absolute;
+			width: 1.8rem; // Ширина линий
+			height: 0.2rem; // Высота линий
+			background-color: #FFFFFF; // Цвет линий
+			top: 50%; // Центрирование по вертикали
+			left: 50%; // Центрирование по горизонтали
+			transform-origin: center; // Установка точки вращения в центр
+		}
+
+		&__close::before {
+			transform: translate(-50%, -50%) rotate(45deg); // Поворот первой линии
+		}
+
+		&__close::after {
+			transform: translate(-50%, -50%) rotate(-45deg); // Поворот первой линии
+		}
+
+		&__list {
+			display: flex;
+    		flex-direction: column;
+			align-items: center; /* Центрируем по горизонтали */
+			justify-content: center; /* Центрируем по вертикали */
+			width: 100%; /* Растягиваем на всю ширину */
+			height: 100%;
+			flex: 1;
+			gap: 4rem;
+		}
+
+		&__item {
+			color: #FFFFFF;
+			font-size: 3rem;
+			font-weight: 600;
+		}
+}
+
+
 
 .main {
 	display: flex;
