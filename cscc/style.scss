@@ -59,19 +59,15 @@
 
 		}
 
-		&__mobile-phone img {
+		&__mobile-phone img,
+		&__mobile-nav img {
 			max-width: 4.4rem;
-			height: auto;
+			height: 4.4rem;
 		}
 
 		&__mobile-nav {
 			background: none; /* Убираем стандартный цвет кнопки */
 			border: none; /* Убираем стандартную рамку кнопки */
-		}
-
-		&__mobile-nav img {
-			max-width: 4.4rem;
-			height: auto;
 		}
 
 		@media (max-width:310px){
@@ -112,27 +108,24 @@
   	width: 100%; /* Растягиваем на всю ширину */
   	height: 100%; /* Растягиваем на всю высоту */
   	z-index: 10; /* Чтобы меню перекрывало header */
-	// display: flex;
 	flex-direction: column;
-
-
 
 		&__close {
 			background: none;
 			border: none;
 			width: 4.4rem;
 			height: 4.4rem;
-
-			background: rgba(255, 255, 255, 0.032);
+			background: rgba(255, 255, 255, 0.05); /*посветлее,чтобы кнопка выделялась*/
 			border-radius: 10px;
-			border: none; /* Убираем стандартную границу */
 			box-shadow: 
 			0 -2px 2px rgb(255, 255, 255, 0.5), /* Ярче сверху */
-			0 1px 2px rgba(255, 255, 255, 0.1); /* Темнее снизу */
+			0 1px 2px rgba(255, 255, 255, 0.05); /* Темнее снизу */
 			align-self: flex-end;
-			position: relative;
+			position: relative; /* для крестика */
+			cursor: pointer;
 			
 		}
+
 // крестик
 		&__close::before,
 		&__close::after {
@@ -170,8 +163,11 @@
 			font-size: 3rem;
 			font-weight: 600;
 		}
+// для открытия меню
+		&__open {
+			display: flex;
+		}
 }
-
 
 
 .main {
