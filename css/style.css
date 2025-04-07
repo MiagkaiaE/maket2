@@ -151,7 +151,7 @@ body {
   display: flex; /* Всегда flex, чтобы можно было анимировать */
   opacity: 0; /* элемент полностью прозрачный*/
   pointer-events: none; /* Отключаем взаимодействие, когда меню скрыто */
-  padding: 0.8rem 1rem;
+  padding: 1rem 1rem;
   background: #141024;
   position: fixed;
   top: 0;
@@ -183,12 +183,25 @@ body {
   top: 50%;
   left: 50%;
   transform-origin: center;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 .mobile-nav__close::before {
-  transform: translate(-50%, -50%) rotate(45deg);
+  transform: translate(-50%, -50%);
 }
 .mobile-nav__close::after {
-  transform: translate(-50%, -50%) rotate(-45deg);
+  transform: translate(-50%, -50%);
+}
+.mobile-nav--open .mobile-nav__close::before {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(45deg); /* Поворот при появлении */
+  transition-delay: 0.2s;
+}
+.mobile-nav--open .mobile-nav__close::after {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(-45deg); /* Поворот при появлении */
+  transition-delay: 0.2s;
 }
 .mobile-nav__list {
   display: flex;

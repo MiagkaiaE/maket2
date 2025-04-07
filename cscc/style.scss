@@ -103,7 +103,7 @@
 	opacity: 0; /* элемент полностью прозрачный*/
 	pointer-events: none; /* Отключаем взаимодействие, когда меню скрыто */
 	// transition: opacity 0.5s ease; /*плавность перехода*/
-	padding: 0.8rem 1rem;
+	padding: 1rem 1rem;
 	background: #141024;
 	position: fixed;
 	top: 0;
@@ -140,15 +140,33 @@
 			top: 50%; // Центрирование по вертикали
 			left: 50%; // Центрирование по горизонтали
 			transform-origin: center; // Установка точки вращения в центр
+			opacity: 0; // скрывааем крестик
+  			transform: scale(0.8);
+  			transition: opacity 0.3s ease, transform 0.3s ease;
 		}
 
 		&__close::before {
-			transform: translate(-50%, -50%) rotate(45deg); // Поворот первой линии
+			transform: translate(-50%, -50%); // Центрируем первую линию
 		}
 
 		&__close::after {
-			transform: translate(-50%, -50%) rotate(-45deg); // Поворот первой линии
+			transform: translate(-50%, -50%); // Центрируеи вторую линию
 		}
+
+		&--open &__close {
+			&::before {
+			  opacity: 1;
+			  transform: translate(-50%, -50%) rotate(45deg); /* Поворот при появлении */
+			  transition-delay: 0.2s;
+			}
+
+			&::after {
+				opacity: 1;
+    			transform: translate(-50%, -50%) rotate(-45deg); /* Поворот при появлении */
+    			transition-delay: 0.2s;
+			}
+		 }
+
 
 		&__list {
 			display: flex;
