@@ -1,37 +1,57 @@
 
-const mobileNavButtonOpen = document.querySelector('.header__mobile-nav');
 const mobileNav = document.querySelector('.mobile-nav');
-const mobileNavButtonClose = document.querySelector('.mobile-nav__close');
-const mobileNavLinks = document.querySelectorAll('.mobile-nav__item a');
 
-// проверка, что элементы существуют
-if (mobileNavButtonOpen && mobileNavButtonClose && mobileNav && mobileNavLinks) {
-	// меню открытие
-	mobileNavButtonOpen.addEventListener('click', () => {
-		mobileNav.classList.add('mobile-nav--open');
-		document.body.style.overflow = 'hidden'; // Блокируем скролл страницы
-	});
-	// закрытие по крестику
-	mobileNavButtonClose.addEventListener('click', () => {
-		mobileNav.classList.remove('mobile-nav--open');
-		document.body.style.overflow = ''; //возвращаем скрол по умолчанию
-	});
-	// закрытие при нажатии на пункт меню
-	mobileNavLinks.forEach(link => {
-		link.addEventListener('click', (event) => {
-			event.preventDefault(); // Отменяем стандартное поведение ссылки для одностраничника
-			mobileNav.classList.remove('mobile-nav--open');
-			document.body.style.overflow = ''; //возвращаем скрол по умолчанию
-		})
-	});
+//универсальная функция для закрытия и открытия мобильного меню и модального окна
+function setElementState(element, className, action, manageOverflow = true) {
+	if (action === 'add') {
+		element.classList.add(className);
+	} else if (action === 'remove') {
+		element.classList.remove(className);
+	 } else {
+		throw new Error('Action must be "add" or "remove"');
+	 }
+	// управляем подключением/ отключением скрола
+	if (manageOverflow) {
+		// проверяем открыт ли элемент (добавлен ли класс)
+		const isOpen = element.classList.contains(className);
+		// удаляем/добавляем скрол в зависимости от состояния класса
+		document.body.style.overflow = (isOpen) ? 'hidden' : '';
+	 }
+}
 
+
+// Проверка, что mobileNav существует
+if (mobileNav) {
+	// Обработчик для click с делегированием
+	document.addEventListener('click', (event) => {
+		//опредяляем, где произошел клик
+	  const target = event.target;
+ 
+	  // Открытие меню (button.header__mobile-nav)
+	  if (target.closest('.header__mobile-nav')) {
+		 setElementState(mobileNav, 'mobile-nav--open', 'add');
+	  }
+ 
+	  // Закрытие по крестику (button.mobile-nav__close)
+	  if (target.matches('.mobile-nav__close')) {
+		 setElementState(mobileNav, 'mobile-nav--open', 'remove');
+	  }
+ 
+	  // Закрытие при нажатии на пункт меню (.mobile-nav__item a)
+	  if (target.matches('.mobile-nav__item a')) {
+		 event.preventDefault();
+		 setElementState(mobileNav, 'mobile-nav--open', 'remove');
+	  }
+	});
+ 
 	// Закрытие меню по клавише Esc
 	document.addEventListener('keydown', (event) => {
-		if (event.key === 'Escape' && mobileNav.classList.contains('mobile-nav--open')) {
-			mobileNav.classList.remove('mobile-nav__open');
-			document.body.style.overflow = ''; //возвращаем скрол по умолчанию
-		}
-	 });
-} else {
-	console.error('Один из элементов не найден: .header__mobile-nav, .mobile-nav или .mobile-nav__close');
-}
+	  if (event.key === 'Escape' && mobileNav.classList.contains('mobile-nav--open')) {
+		 setElementState(mobileNav, 'mobile-nav--open', 'remove');
+	  }
+	});
+ } else {
+	console.error('Элемент .mobile-nav не найден');
+ }
+
+

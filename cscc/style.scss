@@ -102,7 +102,6 @@
 	display: flex; /* Всегда flex, чтобы можно было анимировать */
 	opacity: 0; /* элемент полностью прозрачный*/
 	pointer-events: none; /* Отключаем взаимодействие, когда меню скрыто */
-	// transition: opacity 0.5s ease; /*плавность перехода*/
 	padding: 1rem 1rem;
 	background: #141024;
 	position: fixed;
@@ -118,7 +117,7 @@
 			border: none;
 			width: 4.4rem;
 			height: 4.4rem;
-			background: rgba(255, 255, 255, 0.05); /*посветлее,чтобы кнопка выделялась*/
+			background: rgba(255, 255, 255, 0.01); /*посветлее,чтобы кнопка выделялась*/
 			border-radius: 10px;
 			box-shadow: 
 			0 -2px 2px rgb(255, 255, 255, 0.5), /* Ярче сверху */
@@ -150,7 +149,7 @@
 		}
 
 		&__close::after {
-			transform: translate(-50%, -50%); // Центрируеи вторую линию
+			transform: translate(-50%, -50%); // Центрируем вторую линию
 		}
 
 		&--open &__close {
@@ -189,7 +188,7 @@
 			font-weight: 600;
 			opacity: 0; /* Изначально пункты не видны */
     		transform: translateY(2rem); /* Смещаем вниз на 20px */
-    		transition: opacity 0.5s ease, transform 0.5s ease; /* Анимируем появление */
+    		transition: opacity 0.5s ease, transform 0.5s ease; /* Анимируем появление пунктов меню */
 		}
 		// для открытия меню
 		&--open {
@@ -207,7 +206,7 @@
     		transform: translateY(0); /* Всплывают на исходное положение */
 		}
 
-		// Добавляем задержку старта для каждого пункта, чтобы они выезжали один за другим 
+		// Добавляем задержку старта для каждого пункта, чтобы они всплывали один за другим 
 		&--open &__item:nth-child(1) {
 			transition-delay: 0.1s;
 		}
@@ -226,9 +225,6 @@
 		 }
 
 }
-
-
-
 
 .main {
 	display: flex;
