@@ -99,7 +99,10 @@
 }
 
 .mobile-nav {
-	display: none;
+	display: flex; /* Всегда flex, чтобы можно было анимировать */
+	opacity: 0; /* элемент полностью прозрачный*/
+	pointer-events: none; /* Отключаем взаимодействие, когда меню скрыто */
+	transition: opacity 0.5s ease; /*плавность перехода*/
 	padding: 0.8rem 1rem;
 	background: #141024;
 	position: fixed;
@@ -111,7 +114,7 @@
 	flex-direction: column;
 
 		&__close {
-			background: none;
+			background: none; 
 			border: none;
 			width: 4.4rem;
 			height: 4.4rem;
@@ -169,7 +172,8 @@
 		}
 // для открытия меню
 		&--open {
-			display: flex;
+			opacity: 1;
+			pointer-events: auto; /* Включаем взаимодействие, когда меню открыто */
 		}
 }
 

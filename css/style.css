@@ -148,7 +148,10 @@ body {
 }
 
 .mobile-nav {
-  display: none;
+  display: flex; /* Всегда flex, чтобы можно было анимировать */
+  opacity: 0; /* элемент полностью прозрачный*/
+  pointer-events: none; /* Отключаем взаимодействие, когда меню скрыто */
+  transition: opacity 0.5s ease; /*плавность перехода*/
   padding: 0.8rem 1rem;
   background: #141024;
   position: fixed;
@@ -171,8 +174,6 @@ body {
   position: relative; /* для крестика */
   cursor: pointer;
 }
-
-/* крестик */
 .mobile-nav__close::before, .mobile-nav__close::after {
   content: "";
   position: absolute;
@@ -208,7 +209,8 @@ body {
   font-weight: 600;
 }
 .mobile-nav--open {
-  display: flex;
+  opacity: 1;
+  pointer-events: auto; /* Включаем взаимодействие, когда меню открыто */
 }
 
 .main {
