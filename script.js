@@ -27,7 +27,7 @@ if (mobileNavButtonOpen && mobileNavButtonClose && mobileNav && mobileNavLinks) 
 
 	// Закрытие меню по клавише Esc
 	document.addEventListener('keydown', (event) => {
-		if (event.key === 'Escape' && mobileNav.classList.contains('mobile-nav__open')) {
+		if (event.key === 'Escape' && mobileNav.classList.contains('mobile-nav--open')) {
 			mobileNav.classList.remove('mobile-nav__open');
 			document.body.style.overflow = ''; //возвращаем скрол по умолчанию
 		}

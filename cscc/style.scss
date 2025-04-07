@@ -102,7 +102,7 @@
 	display: flex; /* Всегда flex, чтобы можно было анимировать */
 	opacity: 0; /* элемент полностью прозрачный*/
 	pointer-events: none; /* Отключаем взаимодействие, когда меню скрыто */
-	transition: opacity 0.5s ease; /*плавность перехода*/
+	// transition: opacity 0.5s ease; /*плавность перехода*/
 	padding: 0.8rem 1rem;
 	background: #141024;
 	position: fixed;
@@ -177,7 +177,12 @@
 		&--open {
 			opacity: 1;
 			pointer-events: auto; /* Включаем взаимодействие, когда меню открыто */
+			transition: opacity 0.5s ease; /* Плавность при открытии без задержки */
 		}
+
+		&:not(&--open) {
+			transition: opacity 0.5s ease 0.2s; /* Анимация при закрытии (с задержкой 0.2s), чтобы пункты списка пропали раньше фона меню  */
+		 }
 
 		&--open &__item {
 			opacity: 1; /* пункты меню видимы*/
@@ -196,6 +201,12 @@
 		&--open &__item:nth-child(3) {
 			transition-delay: 0.3s;
 		}
+
+		/* Ускоряем исчезновение пунктов меню*/
+		&:not(&--open) &__item {
+			transition: opacity 0.3s ease, transform 0.3s ease;
+		 }
+
 }
 
 

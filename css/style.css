@@ -151,7 +151,6 @@ body {
   display: flex; /* Всегда flex, чтобы можно было анимировать */
   opacity: 0; /* элемент полностью прозрачный*/
   pointer-events: none; /* Отключаем взаимодействие, когда меню скрыто */
-  transition: opacity 0.5s ease; /*плавность перехода*/
   padding: 0.8rem 1rem;
   background: #141024;
   position: fixed;
@@ -161,6 +160,7 @@ body {
   height: 100%; /* Растягиваем на всю высоту */
   z-index: 10; /* Чтобы меню перекрывало header */
   flex-direction: column;
+  /* Ускоряем исчезновение пунктов меню*/
 }
 .mobile-nav__close {
   background: none;
@@ -214,6 +214,10 @@ body {
 .mobile-nav--open {
   opacity: 1;
   pointer-events: auto; /* Включаем взаимодействие, когда меню открыто */
+  transition: opacity 0.5s ease; /* Плавность при открытии без задержки */
+}
+.mobile-nav:not(.mobile-nav--open) {
+  transition: opacity 0.5s ease 0.2s; /* Анимация при закрытии (с задержкой 0.2s), чтобы пункты списка пропали раньше фона меню  */
 }
 .mobile-nav--open .mobile-nav__item {
   opacity: 1; /* пункты меню видимы*/
@@ -227,6 +231,9 @@ body {
 }
 .mobile-nav--open .mobile-nav__item:nth-child(3) {
   transition-delay: 0.3s;
+}
+.mobile-nav:not(.mobile-nav--open) .mobile-nav__item {
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .main {
