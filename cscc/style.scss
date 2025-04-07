@@ -158,13 +158,17 @@
 			gap: 4rem;
 		}
 
+		&__list a {
+			color: #FFFFFF;
+		}
+
 		&__item {
 			color: #FFFFFF;
 			font-size: 3rem;
 			font-weight: 600;
 		}
 // для открытия меню
-		&__open {
+		&--open {
 			display: flex;
 		}
 }
@@ -205,6 +209,7 @@
 		&__subtitle {
 			font-size: 2rem;
 			max-width: 47.8rem;
+			line-height: 160%;
 	
 		}
 

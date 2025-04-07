@@ -171,6 +171,8 @@ body {
   position: relative; /* для крестика */
   cursor: pointer;
 }
+
+/* крестик */
 .mobile-nav__close::before, .mobile-nav__close::after {
   content: "";
   position: absolute;
@@ -197,12 +199,15 @@ body {
   flex: 1;
   gap: 4rem;
 }
+.mobile-nav__list a {
+  color: #FFFFFF;
+}
 .mobile-nav__item {
   color: #FFFFFF;
   font-size: 3rem;
   font-weight: 600;
 }
-.mobile-nav__open {
+.mobile-nav--open {
   display: flex;
 }
 
@@ -238,6 +243,7 @@ body {
 .hero__subtitle {
   font-size: 2rem;
   max-width: 47.8rem;
+  line-height: 160%;
 }
 .hero__button {
   background: #D52027;
