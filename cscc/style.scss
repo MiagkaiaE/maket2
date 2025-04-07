@@ -169,13 +169,36 @@
 			color: #FFFFFF;
 			font-size: 3rem;
 			font-weight: 600;
+			opacity: 0; /* Изначально пункты не видны */
+    		transform: translateY(2rem); /* Смещаем вниз на 20px */
+    		transition: opacity 0.5s ease, transform 0.5s ease; /* Анимируем появление */
 		}
-// для открытия меню
+		// для открытия меню
 		&--open {
 			opacity: 1;
 			pointer-events: auto; /* Включаем взаимодействие, когда меню открыто */
 		}
+
+		&--open &__item {
+			opacity: 1; /* пункты меню видимы*/
+    		transform: translateY(0); /* Всплывают на исходное положение */
+		}
+
+		// Добавляем задержку старта для каждого пункта, чтобы они выезжали один за другим 
+		&--open &__item:nth-child(1) {
+			transition-delay: 0.1s;
+		}
+
+		&--open &__item:nth-child(2) {
+			transition-delay: 0.2s;
+		}
+
+		&--open &__item:nth-child(3) {
+			transition-delay: 0.3s;
+		}
 }
+
+
 
 
 .main {
