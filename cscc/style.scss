@@ -198,13 +198,32 @@
 		}
 
 		&:not(&--open) {
-			transition: opacity 0.5s ease 0.2s; /* Анимация при закрытии (с задержкой 0.2s), чтобы пункты списка пропали раньше фона меню  */
+			transition: opacity 0.5s ease 0.5s; /* Анимация при закрытии (с задержкой 0.2s), чтобы пункты списка пропали раньше фона меню  */
 		 }
 
 		&--open &__item {
 			opacity: 1; /* пункты меню видимы*/
     		transform: translateY(0); /* Всплывают на исходное положение */
-		}
+		  }
+
+
+		&__item a.mobile-nav__item--active {
+		animation: increaseFontSize 1s ease forwards; /* Анимация работает независимо от .mobile-nav--open */
+		position: relative; /* Чтобы элемент не исчезал сразу */
+		z-index: 11; /* Чтобы элемент был поверх фона */
+		} 
+
+		@keyframes increaseFontSize {
+			0% {
+			  font-size: 3rem;
+			}
+			50% {
+			  font-size: 4rem;
+			}
+			100% {
+			  font-size: 3rem;
+			}
+		 }
 
 		// Добавляем задержку старта для каждого пункта, чтобы они всплывали один за другим 
 		&--open &__item:nth-child(1) {
@@ -221,7 +240,7 @@
 
 		/* Ускоряем исчезновение пунктов меню*/
 		&:not(&--open) &__item {
-			transition: opacity 0.3s ease, transform 0.3s ease;
+			transition: opacity 0.4s ease, transform 0.4s ease;
 		 }
 
 }

@@ -25,29 +25,35 @@ if (mobileNav) {
 	// Обработчик для click с делегированием
 	document.addEventListener('click', (event) => {
 		//опредяляем, где произошел клик
-	  const target = event.target;
+	  	const target = event.target;
  
 	  // Открытие меню (button.header__mobile-nav)
 	  if (target.closest('.header__mobile-nav')) {
-		 setElementState(mobileNav, 'mobile-nav--open', 'add');
+		 	setElementState(mobileNav, 'mobile-nav--open', 'add');
 	  }
  
 	  // Закрытие по крестику (button.mobile-nav__close)
-	  if (target.matches('.mobile-nav__close')) {
-		 setElementState(mobileNav, 'mobile-nav--open', 'remove');
+	  if (target.closest('.mobile-nav__close')) {
+		 	setElementState(mobileNav, 'mobile-nav--open', 'remove');
 	  }
  
 	  // Закрытие при нажатии на пункт меню (.mobile-nav__item a)
-	  if (target.matches('.mobile-nav__item a')) {
-		 event.preventDefault();
-		 setElementState(mobileNav, 'mobile-nav--open', 'remove');
+		if (target.closest('.mobile-nav__item a')) {
+			event.preventDefault();
+			// Удаляем класс mobile-nav__item--active у всех ссылок, чтобы сбросить анимацию
+			document.querySelectorAll('.mobile-nav__item a').forEach(item => {
+				item.classList.remove('mobile-nav__item--active');
+			 });
+			(target.closest('.mobile-nav__item a')).classList.add('mobile-nav__item--active'); // Добавляем класс к <a>
+			setElementState(mobileNav, 'mobile-nav--open', 'remove');
+			
 	  }
 	});
  
 	// Закрытие меню по клавише Esc
 	document.addEventListener('keydown', (event) => {
 	  if (event.key === 'Escape' && mobileNav.classList.contains('mobile-nav--open')) {
-		 setElementState(mobileNav, 'mobile-nav--open', 'remove');
+		 	setElementState(mobileNav, 'mobile-nav--open', 'remove');
 	  }
 	});
  } else {
