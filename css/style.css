@@ -276,13 +276,12 @@ body {
   min-height: 60rem;
 }
 .hero__inner {
-  padding-top: 8rem;
+  padding: 8rem 20rem 0 35rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5rem;
   position: relative; /* Добавляем position: relative */
-  min-height: 60rem; /* Устанавливаем высоту для десктопной версии */
 }
 .hero__content {
   display: flex;
@@ -355,4 +354,84 @@ body {
     height: auto;
     bottom: 4rem;
   }
+}
+
+.about {
+  min-height: 55rem;
+}
+.about__inner {
+  max-width: 120rem; /* 1200px — ширина секции с контентом*/
+  padding: 8rem 2rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8rem;
+}
+.about__subtitle {
+  font-size: 3rem;
+  max-width: 80rem;
+  line-height: 160%;
+}
+.about__subtitle span {
+  font-weight: 600;
+}
+.about__achievements {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+}
+.about__achievements-item {
+  flex: 1; /* Элементы занимают равную ширину */
+}
+.about__number {
+  color: #D52027;
+  font-size: 7rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+.about__description {
+  font-size: 1.8rem;
+  line-height: 160%;
+  max-width: 26rem;
+}
+@media (max-width: 320px) {
+  .about {
+    min-height: 42rem;
+  }
+  .about__inner {
+    padding: 5.5rem 1rem;
+    justify-content: flex-start;
+    gap: 5rem;
+  }
+  .about__subtitle {
+    font-size: 2rem;
+  }
+  .about__achievements {
+    flex-direction: column;
+    gap: 5rem;
+    justify-content: flex-start;
+  }
+  .about__achievements-item {
+    text-align: center;
+  }
+  .about__number {
+    font-size: 6rem;
+    margin-bottom: 1.5rem;
+  }
+  .about__description {
+    margin: 0 auto;
+    font-size: 1.6rem;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(100%);
+  border: 0;
 }/*# sourceMappingURL=style.css.map */

@@ -40,11 +40,13 @@ if (mobileNav) {
 	  // Закрытие при нажатии на пункт меню (.mobile-nav__item a)
 		if (target.closest('.mobile-nav__item a')) {
 			event.preventDefault();
+			const link = target.closest('.mobile-nav__item a');
 			// Удаляем класс mobile-nav__item--active у всех ссылок, чтобы сбросить анимацию
 			document.querySelectorAll('.mobile-nav__item a').forEach(item => {
 				item.classList.remove('mobile-nav__item--active');
+				void link.offsetWidth; //обнуляем состояние анимации через reflow
 			 });
-			(target.closest('.mobile-nav__item a')).classList.add('mobile-nav__item--active'); // Добавляем класс к <a>
+			link.classList.add('mobile-nav__item--active'); // Добавляем класс к <a>
 			setElementState(mobileNav, 'mobile-nav--open', 'remove');
 			
 	  }
