@@ -434,4 +434,25 @@ body {
   overflow: hidden;
   clip-path: inset(100%);
   border: 0;
+}
+
+.benefits {
+  background: #F9F9F9;
+  min-height: 48.5rem;
+}
+.benefits__inner {
+  max-width: 120rem; /* 1200px — ширина секции с контентом*/
+  margin: 0 auto;
+}
+.benefits__item-description {
+  font-size: 1.8rem;
+}
+.section-title {
+  font-size: 50px;
+  font-weight: 600;
+}
+
+.item-title {
+  font-size: 2.4rem;
+  font-weight: 600;
 }/*# sourceMappingURL=style.css.map */

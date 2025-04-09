@@ -250,6 +250,7 @@
 	flex-direction: column;
 	justify-content: space-between;
 }
+
 .hero {
 	background: #141024;
 	min-height: 60rem;
@@ -442,4 +443,49 @@
   	overflow: hidden;
   	clip-path: inset(100%);
   	border: 0;
+}
+
+.benefits {
+	background: #F9F9F9;
+	min-height: 48.5rem;
+	&__inner {
+		max-width: 120rem; /* 1200px — ширина секции с контентом*/
+		margin: 0 auto;
+	}
+
+	&__title {
+	}
+
+	&__list {
+	}
+
+	&__item {
+	}
+
+	&__item-title {
+	}
+
+	&__item-description {
+		font-size: 1.8rem;
+	}
+
+	&__item-container {
+	}
+
+	&__info-icon {
+	}
+
+	&__info {
+	}
+}
+
+// класс для заголовков секции
+.section-title {	
+	font-size: 50px;
+	font-weight: 600;
+	}
+// класс для заголовков элементов секции
+.item-title {
+	font-size: 2.4rem;
+	font-weight: 600;
 }
