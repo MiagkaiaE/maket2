@@ -450,34 +450,81 @@
 	min-height: 48.5rem;
 	&__inner {
 		max-width: 120rem; /* 1200px — ширина секции с контентом*/
+		padding: 8rem 2rem; 
 		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 8rem;
+
 	}
 
 	&__title {
 	}
 
 	&__list {
+		display: flex;
+		justify-content: space-between;
+		gap: 3rem;
 	}
 
 	&__item {
+		flex: 1; /* Элементы занимают равную ширину */
 	}
 
 	&__item-title {
+		
+		
 	}
 
 	&__item-description {
+		margin-top: 2rem;
 		font-size: 1.8rem;
+		line-height: 160%;
+		max-width: 35rem;
 	}
 
 	&__item-container {
+		display: inline-flex; // Используем inline-flex
+    	align-items: center; // Выравниваем по центру
+    	gap: 0.8rem; // Отступ 5px между заголовком и иконкой
 	}
+
 
 	&__info-icon {
-	}
+		position: relative;
+    	top: -0.8rem; // Сдвигаем иконку вверх на 3px
+		cursor: pointer;
+
+		img {
+			width: 2.4rem; // Сохраняем размер иконки
+		 }
+	}	
 
 	&__info {
-	}
+		position: absolute;
+		bottom: 100%;
+		left: 0;
+		margin-bottom: 1rem; // Отступ между подсказкой и иконкой
+		font-size: 1.6rem;
+		padding: 2rem 3rem;
+		background:#FFFFFF;
+		text-align: center;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); // Лёгкая тень
+    	border-radius: 0.4rem; // Скругление углов
+		white-space: nowrap; // Текст не переносится
+		visibility: hidden;
+		opacity: 0;
+		transition: opacity 0.3s ease;
+	 }
+  
+	 &__info-icon:hover &__info {
+		opacity: 1;
+		visibility: visible;
+	 }
+
 }
+
 
 // класс для заголовков секции
 .section-title {	

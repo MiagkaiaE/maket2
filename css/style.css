@@ -442,11 +442,61 @@ body {
 }
 .benefits__inner {
   max-width: 120rem; /* 1200px — ширина секции с контентом*/
+  padding: 8rem 2rem;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8rem;
+}
+.benefits__list {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+}
+.benefits__item {
+  flex: 1; /* Элементы занимают равную ширину */
 }
 .benefits__item-description {
+  margin-top: 2rem;
   font-size: 1.8rem;
+  line-height: 160%;
+  max-width: 35rem;
 }
+.benefits__item-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.benefits__info-icon {
+  position: relative;
+  top: -0.8rem;
+  cursor: pointer;
+}
+.benefits__info-icon img {
+  width: 2.4rem;
+}
+.benefits__info {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  padding: 2rem 3rem;
+  background: #FFFFFF;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 0.4rem;
+  white-space: nowrap;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.benefits__info-icon:hover .benefits__info {
+  opacity: 1;
+  visibility: visible;
+}
+
 .section-title {
   font-size: 50px;
   font-weight: 600;
