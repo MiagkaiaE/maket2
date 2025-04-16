@@ -559,13 +559,9 @@
 		&__item-container {
 			display:inline-flex;
 		}
-
-		&__item-container &__item-title {
-			display: block;
-		}
 		
 		&__item-description {
-			flex: 1.6rem;
+			font-size: 1.6rem;
 		}
 
 		&__item-tooltipe {
@@ -574,6 +570,7 @@
 
 		&__info-icon {
 			position: absolute;
+			top:-0.8rem;
 		}
 
 		&__info {
@@ -581,6 +578,7 @@
 			padding:1.5rem 2rem;
 			left: 50%; // Выравниваем по центру блока
     		transform: translateX(-50%); // Сдвигаем влево на 50% ширины самой подсказки
+			 max-width: 90%
 
 		}
 	}
