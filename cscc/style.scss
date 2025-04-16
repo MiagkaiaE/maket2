@@ -37,11 +37,14 @@
 		&__nav-list {
 			display: flex;
 			gap: 4rem;
+		
 		}
 
 		&__nav-item {
 			font-size: 2rem;
+			position: relative;
 		}
+
 
 		&__nav-link {
 			color: #FFFFFF;
@@ -253,7 +256,6 @@
 
 .hero {
 	background: #141024;
-	min-height: 60rem;
 
 		&__inner {
 			padding: 8rem 20rem 0 35rem;
@@ -352,7 +354,6 @@
 	}
 
 .about {
-	min-height: 55rem;
 		&__inner {
 			max-width: 120rem; /* 1200px — ширина секции с контентом*/
 			padding: 8rem 2rem; 
@@ -447,45 +448,158 @@
 
 .benefits {
 	background: #F9F9F9;
-	min-height: 48.5rem;
+	
 	&__inner {
 		max-width: 120rem; /* 1200px — ширина секции с контентом*/
 		margin: 0 auto;
+		padding: 8rem 2rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 8rem;
 	}
 
 	&__title {
 	}
 
 	&__list {
+		display: flex;
+		justify-content: space-between;
+		gap:3rem;
+		
 	}
 
 	&__item {
+		display: flex;
+		flex-direction: column;
+		gap: 3rem;
+		align-items: flex-start;
+		flex: 1; /* Элементы занимают равную ширину */
 	}
 
 	&__item-title {
+		
 	}
 
 	&__item-description {
 		font-size: 1.8rem;
+		line-height: 160%;
+		max-width: 34.5rem;
 	}
 
 	&__item-container {
+		display: flex;
+		gap: 0.5rem;
+	}
+
+	&__item-tooltipe {
+		position: relative;
 	}
 
 	&__info-icon {
+		position: relative;
+		top:-0.8rem;
+		font-size: 1.2rem;
+		border-radius: 50%;
+		width: 2.4rem;
+		height: 2.4rem;
+		display: inline-flex;//чтобы разместить i в по центру поля
+		align-items: center;
+		justify-content: center;
+		background: #14102414;
+		cursor: pointer;
+		
 	}
 
 	&__info {
+		font-size: 1.6rem;
+		padding: 1.5rem 3rem;
+		background: #FFFFFF;
+		border-radius: 0.5rem;
+		position: absolute;
+		margin-bottom: 1.5rem;
+		white-space: nowrap;
+		left: 0;
+		bottom: 100%;
+		visibility: hidden;
+		opacity: 0;
+		transition: opacity 0.3s ease;
 	}
+
+
+	&__info-icon:hover + &__info {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	@media (max-width:320px) {
+		&__inner {
+			padding: 5.5rem 1rem;
+			justify-content: flex-start;
+			text-align: center;
+			gap: 4rem;
+		}
+
+		&__list {
+			flex-direction: column;
+			justify-content: flex-start;
+			
+			
+		}
+
+		&__item {
+			align-items: center;
+			gap: 1.5rem;
+			position: relative;
+		}
+
+		&__item-container {
+			display:inline-flex;
+		}
+
+		&__item-container &__item-title {
+			display: block;
+		}
+		
+		&__item-description {
+			flex: 1.6rem;
+		}
+
+		&__item-tooltipe {
+			position: static;
+		}
+
+		&__info-icon {
+			position: absolute;
+		}
+
+		&__info {
+			font-size: 1.4rem;
+			padding:1.5rem 2rem;
+			left: 50%; // Выравниваем по центру блока
+    		transform: translateX(-50%); // Сдвигаем влево на 50% ширины самой подсказки
+
+		}
+	}
+
 }
 
 // класс для заголовков секции
 .section-title {	
 	font-size: 50px;
 	font-weight: 600;
+
+	@media (max-width:320px) {
+		font-size: 3rem;
+		line-height: 140%;
+	}	
 	}
 // класс для заголовков элементов секции
 .item-title {
 	font-size: 2.4rem;
 	font-weight: 600;
+
+	@media (max-width:320px) {
+		font-size: 2rem;
+	}	
 }
