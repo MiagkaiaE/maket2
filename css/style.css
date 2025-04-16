@@ -89,6 +89,9 @@ body {
 /* header */
 .header {
   background: #141024;
+  /* Верхний бордер (::before) */
+  /* Нижний бордер (::after) */
+  /* Верхний бордер (::before) */
 }
 .header__inner {
   display: flex;
@@ -106,15 +109,69 @@ body {
 }
 .header__nav-item {
   font-size: 2rem;
-  position: relative;
 }
 .header__nav-link {
   color: #FFFFFF;
+  display: inline-block; /*чтобы ссылка стала вести себя как блок для правильного отображения подчеркивания */
+  position: relative; /* Для позиционирования псевдоэлементов */
+}
+.header__nav-link::before {
+  content: "";
+  position: absolute;
+  top: -1rem;
+  left: 0;
+  width: 0; /* Изначально ширина 0 */
+  height: 1px; /* Толщина бордера */
+  background: #FFFFFF; /* Цвет бордера */
+  transition: width 0.3s ease; /* Анимация ширины */
+}
+.header__nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -1rem;
+  right: 0;
+  width: 0; /* Изначально ширина 0 */
+  height: 1px; /* Толщина бордера */
+  background: #FFFFFF; /* Цвет бордера */
+  transition: width 0.3s ease; /* Анимация ширины */
+}
+.header__nav-link:hover::before {
+  width: 100%; /* Увеличиваем ширину до 100% (слева направо) */
+}
+.header__nav-link:hover::after {
+  width: 100%; /* Увеличиваем ширину до 100% (справа налево) */
 }
 .header__phone {
   color: #FFFFFF;
   font-size: 3rem;
   font-weight: 600;
+  position: relative; /* Для позиционирования псевдоэлементов */
+}
+.header__phone::before {
+  content: "";
+  position: absolute;
+  top: -1rem;
+  left: 0;
+  width: 0; /* Изначально ширина 0 */
+  height: 1px; /* Толщина бордера */
+  background: #FFFFFF; /* Цвет бордера */
+  transition: width 0.3s ease; /* Анимация ширины */
+}
+.header__phone::after {
+  content: "";
+  position: absolute;
+  bottom: -1rem;
+  right: 0;
+  width: 0; /* Изначально ширина 0 */
+  height: 1px; /* Толщина бордера */
+  background: #FFFFFF; /* Цвет бордера */
+  transition: width 0.3s ease; /* Анимация ширины */
+}
+.header__phone:hover::before {
+  width: 100%; /* Увеличиваем ширину до 100% (слева направо) */
+}
+.header__phone:hover::after {
+  width: 100%; /* Увеличиваем ширину до 100% (справа налево) */
 }
 .header__mobile {
   display: none;

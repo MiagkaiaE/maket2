@@ -42,18 +42,82 @@
 
 		&__nav-item {
 			font-size: 2rem;
-			position: relative;
 		}
 
 
 		&__nav-link {
 			color: #FFFFFF;
+			display: inline-block;/*чтобы ссылка стала вести себя как блок для правильного отображения подчеркивания */
+			position: relative; /* Для позиционирования псевдоэлементов */
 		}
+
+		/* Верхний бордер (::before) */
+		&__nav-link::before {
+			content:"";
+			position: absolute;
+			top: -1rem;
+			left: 0;
+			width: 0; /* Изначально ширина 0 */
+			height: 1px; /* Толщина бордера */
+			background: #FFFFFF; /* Цвет бордера */
+			transition: width 0.3s ease; /* Анимация ширины */
+		}
+		/* Нижний бордер (::after) */
+		&__nav-link::after{
+			content: '';
+			position: absolute;
+			bottom: -1rem;
+			right: 0;
+			width: 0; /* Изначально ширина 0 */
+			height: 1px; /* Толщина бордера */
+			background: #FFFFFF; /* Цвет бордера */
+			transition: width 0.3s ease; /* Анимация ширины */
+		}
+
+		&__nav-link:hover::before {
+			width: 100%; /* Увеличиваем ширину до 100% (слева направо) */
+		 }
+	  
+		 &__nav-link:hover::after {
+			width: 100%; /* Увеличиваем ширину до 100% (справа налево) */
+		 }
 
 		&__phone {
 			color: #FFFFFF;
 			font-size: 3rem;
 			font-weight: 600;
+			position: relative; /* Для позиционирования псевдоэлементов */
+		}
+
+		/* Верхний бордер (::before) */
+		&__phone::before {
+			content: "";
+			position: absolute;
+			top: -1rem;
+			left: 0;
+			width: 0; /* Изначально ширина 0 */
+			height: 1px; /* Толщина бордера */
+			background: #FFFFFF; /* Цвет бордера */
+			transition: width 0.3s ease; /* Анимация ширины */
+		}
+
+		&__phone::after {
+			content: "";
+			position: absolute;
+			bottom: -1rem;
+			right: 0;
+			width: 0; /* Изначально ширина 0 */
+			height: 1px; /* Толщина бордера */
+			background: #FFFFFF; /* Цвет бордера */
+			transition: width 0.3s ease; /* Анимация ширины */
+		}
+
+		&__phone:hover::before {
+			width: 100%; /* Увеличиваем ширину до 100% (слева направо) */
+		}
+
+		&__phone:hover::after {
+			width: 100%;/* Увеличиваем ширину до 100% (справа налево) */
 		}
 
 // мобильная версия
