@@ -126,15 +126,25 @@
 
 		}
 
-		&__mobile-phone img,
-		&__mobile-nav img {
-			max-width: 4.4rem;
-			height: 4.4rem;
-		}
-
 		&__mobile-nav {
 			background: none; /* Убираем стандартный цвет кнопки */
 			border: none; /* Убираем стандартную рамку кнопки */
+		}
+
+		&__mobile-phone {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		&__mobile-nav, &__mobile-phone {
+			width: 4.4rem;
+			height: 4.4rem;
+			background: rgba(255, 255, 255, 0.01); /*посветлее,чтобы кнопка выделялась*/
+			border-radius: 10px;
+			box-shadow: 
+			0 -2px 2px rgb(255, 255, 255, 0.5), /* Ярче сверху */
+			0 1px 2px rgba(255, 255, 255, 0.05); /* Темнее снизу */
 		}
 
 		@media (max-width:320px){
