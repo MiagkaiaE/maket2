@@ -18,7 +18,13 @@ function setElementState(element, className, action, manageOverflow = true) {
 		document.body.style.overflow = (isOpen) ? 'hidden' : '';
 	 }
 }
-
+// Функция для запуска эффекта нажатия
+function triggerPressEffect(element) {
+	element.classList.add('active');
+	setTimeout(() => {
+	  element.classList.remove('active');
+	}, 200); // Длительность эффекта нажатия — 200 мс
+ }
 
 // Проверка, что mobileNav существует
 if (mobileNav) {
@@ -28,28 +34,36 @@ if (mobileNav) {
 	  	const target = event.target;
  
 	  // Открытие меню (button.header__mobile-nav)
-	  if (target.closest('.header__mobile-nav')) {
-		 	setElementState(mobileNav, 'mobile-nav--open', 'add');
+		if (target.closest('.header__mobile-nav')) {
+			const navButtonOpen = target.closest('.header__mobile-nav');
+		  	setElementState(mobileNav, 'mobile-nav--open', 'add');
+		  	triggerPressEffect(navButtonOpen); // Эффект нажатия
 	  }
- 
+  
 	  // Закрытие по крестику (button.mobile-nav__close)
-	  if (target.closest('.mobile-nav__close')) {
-		 	setElementState(mobileNav, 'mobile-nav--open', 'remove');
+		if (target.closest('.mobile-nav__close')) {
+			const navButtonClose = target.closest('.mobile-nav__close');
+			setElementState(mobileNav, 'mobile-nav--open', 'remove');
+			triggerPressEffect(navButtonClose);
 	  }
  
 	  // Закрытие при нажатии на пункт меню (.mobile-nav__item a)
-		if (target.closest('.mobile-nav__item a')) {
-			event.preventDefault();
-			const link = target.closest('.mobile-nav__item a');
-			// Удаляем класс mobile-nav__item--active у всех ссылок, чтобы сбросить анимацию
-			document.querySelectorAll('.mobile-nav__item a').forEach(item => {
-				item.classList.remove('mobile-nav__item--active');
-				void link.offsetWidth; //обнуляем состояние анимации через reflow
-			 });
-			link.classList.add('mobile-nav__item--active'); // Добавляем класс к <a>
-			setElementState(mobileNav, 'mobile-nav--open', 'remove');
-			
-	  }
+		if (target.closest('.mobile-nav__item .nav-link')) {
+			// event.preventDefault();
+			const link = target.closest('.mobile-nav__item .nav-link');
+			link.classList.add('active'); // Добавляем active для подчёркивания
+			setTimeout(() => {
+				setElementState(mobileNav, 'mobile-nav--open', 'remove');
+				link.classList.remove('active');
+			 }, 200); // Задержка 300 мс
+		}
+		
+		// Клик по иконке телефона (a.header__mobile-phone)
+		if (target.closest('.header__mobile-phone')) {
+			const phoneButton = target.closest('.header__mobile-phone');
+			triggerPressEffect(phoneButton); // Эффект нажатия
+			// Ссылка tel: сработает автоматически
+		 }
 	});
  
 	// Закрытие меню по клавише Esc

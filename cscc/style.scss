@@ -2,6 +2,11 @@
 /* импорт обнуляющий стиль */
 @import "../css/_null_style";
 
+/* Добавляем плавную прокрутку для всей страницы */
+html {
+	scroll-behavior: smooth;
+ }
+
  body {
 	font-family: Jost, sans-serif;
  }
@@ -44,44 +49,6 @@
 			font-size: 2rem;
 		}
 
-
-		&__nav-link {
-			color: #FFFFFF;
-			display: inline-block;/*чтобы ссылка стала вести себя как блок для правильного отображения подчеркивания */
-			position: relative; /* Для позиционирования псевдоэлементов */
-		}
-
-		/* Верхний бордер (::before) */
-		&__nav-link::before {
-			content:"";
-			position: absolute;
-			top: -1rem;
-			left: 0;
-			width: 0; /* Изначально ширина 0 */
-			height: 1px; /* Толщина бордера */
-			background: #FFFFFF; /* Цвет бордера */
-			transition: width 0.3s ease; /* Анимация ширины */
-		}
-		/* Нижний бордер (::after) */
-		&__nav-link::after{
-			content: '';
-			position: absolute;
-			bottom: -1rem;
-			right: 0;
-			width: 0; /* Изначально ширина 0 */
-			height: 1px; /* Толщина бордера */
-			background: #FFFFFF; /* Цвет бордера */
-			transition: width 0.3s ease; /* Анимация ширины */
-		}
-
-		&__nav-link:hover::before {
-			width: 100%; /* Увеличиваем ширину до 100% (слева направо) */
-		 }
-	  
-		 &__nav-link:hover::after {
-			width: 100%; /* Увеличиваем ширину до 100% (справа налево) */
-		 }
-
 		&__phone {
 			color: #FFFFFF;
 			font-size: 3rem;
@@ -123,7 +90,6 @@
 // мобильная версия
 		&__mobile {
 			display: none;
-
 		}
 
 		&__mobile-nav {
@@ -132,7 +98,8 @@
 		}
 
 		&__mobile-phone {
-			display: inline-flex;
+			/* для размещения телефонной трубки по центру поля */
+			display: inline-flex; 
 			align-items: center;
 			justify-content: center;
 		}
@@ -145,6 +112,20 @@
 			box-shadow: 
 			0 -2px 2px rgb(255, 255, 255, 0.5), /* Ярче сверху */
 			0 1px 2px rgba(255, 255, 255, 0.05); /* Темнее снизу */
+		}
+
+		/* Эффект нажатия */
+		&__mobile-nav.active,
+		&__mobile-phone.active {
+		  transform: scale(0.95);
+		  box-shadow: 
+			 0 -1px 1px rgba(255, 255, 255, 0.3),
+			 0 1px 1px rgba(255, 255, 255, 0.03);
+		 	 background: rgba(255, 255, 255, 0.05);
+		}
+
+		&__mobile-icon {
+			color: #FFFFFF;
 		}
 
 		@media (max-width:320px){
@@ -173,6 +154,49 @@
 			}
 
 		}
+}
+
+// подчеркивание для пунктов меню в дектопе и мобильной версии
+.nav-link {
+	color: #FFFFFF;
+	display: inline-block;/*чтобы ссылка стала вести себя как блок для правильного отображения подчеркивания */
+	position: relative; /* Для позиционирования псевдоэлементов */
+}
+
+/* Верхний бордер (::before) */
+.nav-link::before {
+	content:"";
+	position: absolute;
+	top: -1rem;
+	left: 0;
+	width: 0; /* Изначально ширина 0 */
+	height: 1px; /* Толщина бордера */
+	background: #FFFFFF; /* Цвет бордера */
+	transition: width 0.3s ease; /* Анимация ширины */
+}
+/* Нижний бордер (::after) */
+.nav-link::after{
+	content: '';
+	position: absolute;
+	bottom: -1rem;
+	right: 0;
+	width: 0; /* Изначально ширина 0 */
+	height: 1px; /* Толщина бордера */
+	background: #FFFFFF; /* Цвет бордера */
+	transition: width 0.3s ease; /* Анимация ширины */
+}
+
+/* и для наведения на декстопе и при активации на мобильной версии */
+.nav-link:hover::before,
+.nav-link.active::before {
+width: 100%; /* Увеличиваем ширину до 100% (слева направо) */
+z-index: 100;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+width: 100%; /* Увеличиваем ширину до 100% (справа налево) */
+z-index: 100;
 }
 
 .mobile-nav {
@@ -205,6 +229,15 @@
 			
 		}
 
+		/* Эффект нажатия для крестика */
+		&__close.active {
+			transform: scale(0.95);
+			box-shadow: 
+			  0 -1px 1px rgba(255, 255, 255, 0.3),
+			  0 1px 1px rgba(255, 255, 255, 0.03);
+			background: rgba(255, 255, 255, 0.05);
+		 }
+
 // крестик
 		&__close::before,
 		&__close::after {
@@ -219,14 +252,7 @@
 			opacity: 0; // скрывааем крестик
   			transform: scale(0.8);
   			transition: opacity 0.3s ease, transform 0.3s ease;
-		}
-
-		&__close::before {
-			transform: translate(-50%, -50%); // Центрируем первую линию
-		}
-
-		&__close::after {
-			transform: translate(-50%, -50%); // Центрируем вторую линию
+			transform: translate(-50%, -50%); // Центрируем линии
 		}
 
 		&--open &__close {
@@ -275,7 +301,8 @@
 		}
 
 		&:not(&--open) {
-			transition: opacity 0.5s ease 0.5s; /* Анимация при закрытии (с задержкой 0.2s), чтобы пункты списка пропали раньше фона меню  */
+			transition: opacity 0.5s ease 0.5s; /* Анимация при закрытии (с задержкой 0.5s)*/
+
 		 }
 
 		&--open &__item {
@@ -283,24 +310,13 @@
     		transform: translateY(0); /* Всплывают на исходное положение */
 		  }
 
-
-		&__item a.mobile-nav__item--active {
-		animation: increaseFontSize 1s ease forwards; /* Анимация работает независимо от .mobile-nav--open */
-		position: relative; /* Чтобы элемент не исчезал сразу */
-		z-index: 11; /* Чтобы элемент был поверх фона */
-		} 
-
-		@keyframes increaseFontSize {
-			0% {
-			  font-size: 3rem;
-			}
-			50% {
-			  font-size: 4rem;
-			}
-			100% {
-			  font-size: 3rem;
-			}
+		/* Исчезновение пунктов без сползания */
+		&:not(&--open) &__item {
+			transition: opacity 0.4s ease; /* Только opacity при закрытии */
+			opacity: 0;
+			transform: translateY(0); /* Отменяем смещение вниз */
 		 }
+
 
 		// Добавляем задержку старта для каждого пункта, чтобы они всплывали один за другим 
 		&--open &__item:nth-child(1) {
@@ -314,12 +330,6 @@
 		&--open &__item:nth-child(3) {
 			transition-delay: 0.3s;
 		}
-
-		/* Ускоряем исчезновение пунктов меню*/
-		&:not(&--open) &__item {
-			transition: opacity 0.4s ease, transform 0.4s ease;
-		 }
-
 }
 
 .main {

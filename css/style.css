@@ -74,6 +74,11 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 400;
 }
 
+/* Добавляем плавную прокрутку для всей страницы */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Jost, sans-serif;
 }
@@ -90,8 +95,7 @@ body {
 .header {
   background: #141024;
   /* Верхний бордер (::before) */
-  /* Нижний бордер (::after) */
-  /* Верхний бордер (::before) */
+  /* Эффект нажатия */
 }
 .header__inner {
   display: flex;
@@ -109,37 +113,6 @@ body {
 }
 .header__nav-item {
   font-size: 2rem;
-}
-.header__nav-link {
-  color: #FFFFFF;
-  display: inline-block; /*чтобы ссылка стала вести себя как блок для правильного отображения подчеркивания */
-  position: relative; /* Для позиционирования псевдоэлементов */
-}
-.header__nav-link::before {
-  content: "";
-  position: absolute;
-  top: -1rem;
-  left: 0;
-  width: 0; /* Изначально ширина 0 */
-  height: 1px; /* Толщина бордера */
-  background: #FFFFFF; /* Цвет бордера */
-  transition: width 0.3s ease; /* Анимация ширины */
-}
-.header__nav-link::after {
-  content: "";
-  position: absolute;
-  bottom: -1rem;
-  right: 0;
-  width: 0; /* Изначально ширина 0 */
-  height: 1px; /* Толщина бордера */
-  background: #FFFFFF; /* Цвет бордера */
-  transition: width 0.3s ease; /* Анимация ширины */
-}
-.header__nav-link:hover::before {
-  width: 100%; /* Увеличиваем ширину до 100% (слева направо) */
-}
-.header__nav-link:hover::after {
-  width: 100%; /* Увеличиваем ширину до 100% (справа налево) */
 }
 .header__phone {
   color: #FFFFFF;
@@ -181,6 +154,7 @@ body {
   border: none; /* Убираем стандартную рамку кнопки */
 }
 .header__mobile-phone {
+  /* для размещения телефонной трубки по центру поля */
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -191,6 +165,14 @@ body {
   background: rgba(255, 255, 255, 0.01); /*посветлее,чтобы кнопка выделялась*/
   border-radius: 10px;
   box-shadow: 0 -2px 2px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(255, 255, 255, 0.05); /* Темнее снизу */
+}
+.header__mobile-nav.active, .header__mobile-phone.active {
+  transform: scale(0.95);
+  box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.3), 0 1px 1px rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.05);
+}
+.header__mobile-icon {
+  color: #FFFFFF;
 }
 @media (max-width: 320px) {
   .header__inner {
@@ -213,6 +195,49 @@ body {
   }
 }
 
+.nav-link {
+  color: #FFFFFF;
+  display: inline-block; /*чтобы ссылка стала вести себя как блок для правильного отображения подчеркивания */
+  position: relative; /* Для позиционирования псевдоэлементов */
+}
+
+/* Верхний бордер (::before) */
+.nav-link::before {
+  content: "";
+  position: absolute;
+  top: -1rem;
+  left: 0;
+  width: 0; /* Изначально ширина 0 */
+  height: 1px; /* Толщина бордера */
+  background: #FFFFFF; /* Цвет бордера */
+  transition: width 0.3s ease; /* Анимация ширины */
+}
+
+/* Нижний бордер (::after) */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -1rem;
+  right: 0;
+  width: 0; /* Изначально ширина 0 */
+  height: 1px; /* Толщина бордера */
+  background: #FFFFFF; /* Цвет бордера */
+  transition: width 0.3s ease; /* Анимация ширины */
+}
+
+/* и для наведения на декстопе и при активации на мобильной версии */
+.nav-link:hover::before,
+.nav-link.active::before {
+  width: 100%; /* Увеличиваем ширину до 100% (слева направо) */
+  z-index: 100;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%; /* Увеличиваем ширину до 100% (справа налево) */
+  z-index: 100;
+}
+
 .mobile-nav {
   display: flex; /* Всегда flex, чтобы можно было анимировать */
   opacity: 0; /* элемент полностью прозрачный*/
@@ -226,7 +251,8 @@ body {
   height: 100%; /* Растягиваем на всю высоту */
   z-index: 10; /* Чтобы меню перекрывало header */
   flex-direction: column;
-  /* Ускоряем исчезновение пунктов меню*/
+  /* Эффект нажатия для крестика */
+  /* Исчезновение пунктов без сползания */
 }
 .mobile-nav__close {
   background: none;
@@ -240,6 +266,11 @@ body {
   position: relative; /* для крестика */
   cursor: pointer;
 }
+.mobile-nav__close.active {
+  transform: scale(0.95);
+  box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.3), 0 1px 1px rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.05);
+}
 .mobile-nav__close::before, .mobile-nav__close::after {
   content: "";
   position: absolute;
@@ -252,11 +283,6 @@ body {
   opacity: 0;
   transform: scale(0.8);
   transition: opacity 0.3s ease, transform 0.3s ease;
-}
-.mobile-nav__close::before {
-  transform: translate(-50%, -50%);
-}
-.mobile-nav__close::after {
   transform: translate(-50%, -50%);
 }
 .mobile-nav--open .mobile-nav__close::before {
@@ -296,27 +322,16 @@ body {
   transition: opacity 0.5s ease; /* Плавность при открытии без задержки */
 }
 .mobile-nav:not(.mobile-nav--open) {
-  transition: opacity 0.5s ease 0.5s; /* Анимация при закрытии (с задержкой 0.2s), чтобы пункты списка пропали раньше фона меню  */
+  transition: opacity 0.5s ease 0.5s; /* Анимация при закрытии (с задержкой 0.5s)*/
 }
 .mobile-nav--open .mobile-nav__item {
   opacity: 1; /* пункты меню видимы*/
   transform: translateY(0); /* Всплывают на исходное положение */
 }
-.mobile-nav__item a.mobile-nav__item--active {
-  animation: increaseFontSize 1s ease forwards; /* Анимация работает независимо от .mobile-nav--open */
-  position: relative; /* Чтобы элемент не исчезал сразу */
-  z-index: 11; /* Чтобы элемент был поверх фона */
-}
-@keyframes increaseFontSize {
-  0% {
-    font-size: 3rem;
-  }
-  50% {
-    font-size: 4rem;
-  }
-  100% {
-    font-size: 3rem;
-  }
+.mobile-nav:not(.mobile-nav--open) .mobile-nav__item {
+  transition: opacity 0.4s ease; /* Только opacity при закрытии */
+  opacity: 0;
+  transform: translateY(0); /* Отменяем смещение вниз */
 }
 .mobile-nav--open .mobile-nav__item:nth-child(1) {
   transition-delay: 0.1s;
@@ -326,9 +341,6 @@ body {
 }
 .mobile-nav--open .mobile-nav__item:nth-child(3) {
   transition-delay: 0.3s;
-}
-.mobile-nav:not(.mobile-nav--open) .mobile-nav__item {
-  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 .main {
