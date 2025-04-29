@@ -290,8 +290,7 @@ z-index: 100;
 			font-size: 3rem;
 			font-weight: 600;
 			opacity: 0; /* Изначально пункты не видны */
-    		transform: translateY(2rem); /* Смещаем вниз на 20px */
-    		transition: opacity 0.5s ease, transform 0.5s ease; /* Анимируем появление пунктов меню */
+    		transition: opacity 1s ease; /* Анимируем появление пунктов меню */
 		}
 		// для открытия меню
 		&--open {
@@ -307,14 +306,12 @@ z-index: 100;
 
 		&--open &__item {
 			opacity: 1; /* пункты меню видимы*/
-    		transform: translateY(0); /* Всплывают на исходное положение */
 		  }
 
-		/* Исчезновение пунктов без сползания */
+		/* Исчезновение пунктов*/
 		&:not(&--open) &__item {
-			transition: opacity 0.4s ease; /* Только opacity при закрытии */
+			transition: opacity 0.5s ease; /* Только opacity при закрытии */
 			opacity: 0;
-			transform: translateY(0); /* Отменяем смещение вниз */
 		 }
 
 

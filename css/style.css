@@ -252,7 +252,7 @@ body {
   z-index: 10; /* Чтобы меню перекрывало header */
   flex-direction: column;
   /* Эффект нажатия для крестика */
-  /* Исчезновение пунктов без сползания */
+  /* Исчезновение пунктов*/
 }
 .mobile-nav__close {
   background: none;
@@ -313,8 +313,7 @@ body {
   font-size: 3rem;
   font-weight: 600;
   opacity: 0; /* Изначально пункты не видны */
-  transform: translateY(2rem); /* Смещаем вниз на 20px */
-  transition: opacity 0.5s ease, transform 0.5s ease; /* Анимируем появление пунктов меню */
+  transition: opacity 1s ease; /* Анимируем появление пунктов меню */
 }
 .mobile-nav--open {
   opacity: 1;
@@ -326,12 +325,10 @@ body {
 }
 .mobile-nav--open .mobile-nav__item {
   opacity: 1; /* пункты меню видимы*/
-  transform: translateY(0); /* Всплывают на исходное положение */
 }
 .mobile-nav:not(.mobile-nav--open) .mobile-nav__item {
-  transition: opacity 0.4s ease; /* Только opacity при закрытии */
+  transition: opacity 0.5s ease; /* Только opacity при закрытии */
   opacity: 0;
-  transform: translateY(0); /* Отменяем смещение вниз */
 }
 .mobile-nav--open .mobile-nav__item:nth-child(1) {
   transition-delay: 0.1s;
