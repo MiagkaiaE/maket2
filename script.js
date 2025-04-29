@@ -55,7 +55,7 @@ if (mobileNav) {
 			setTimeout(() => {
 				setElementState(mobileNav, 'mobile-nav--open', 'remove');
 				link.classList.remove('active');
-			 }, 200); // Задержка 300 мс
+			 }, 200);
 		}
 		
 		// Клик по иконке телефона (a.header__mobile-phone)
@@ -63,7 +63,12 @@ if (mobileNav) {
 			const phoneButton = target.closest('.header__mobile-phone');
 			triggerPressEffect(phoneButton); // Эффект нажатия
 			// Ссылка tel: сработает автоматически
-		 }
+		}
+		//клик по кнопке Записаться на курс
+		if (target.closest('.hero__button')) {
+			const heroButton = target.closest('.hero__button');
+			triggerPressEffect(heroButton); // Эффект нажатия
+		}
 	});
  
 	// Закрытие меню по клавише Esc

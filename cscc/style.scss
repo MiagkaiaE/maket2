@@ -374,11 +374,25 @@ z-index: 100;
 			background: #D52027;
 			color: #FFFFFF;
 			font-size: 1.8rem;
-			padding: 1.5rem 2rem;
+			padding: 2.5rem 3rem;
 			max-width: 25rem;
 			border-radius: 0.5rem;
+			border: 2px solid #D52027;
 			cursor: pointer;
+			transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease; /* Добавляем transition для всех свойств */
+
+			&:hover {
+				color:#D52027;
+				background:#FFFFFF;
+			} 
 		}
+
+		/* Эффект нажатия (для десктопа и мобильной версии) */
+		&__button.active {
+			color:#D52027;
+			background:#FFFFFF;
+			transform: scale(0.98);
+			}
 
 		&__image {
 			max-width: 78.3rem;
